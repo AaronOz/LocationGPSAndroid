@@ -10,41 +10,73 @@
     tools:context="com.example.aaron.locationgps.MainActivity">
 
     <TextView
-        android:id="@+id/alttitudeText"
+        android:id="@+id/latText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Alttitude:"/>
     <TextView
-        android:id="@+id/longitudeText"
+        android:id="@+id/latValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_toRightOf="@id/latText"/>
+    <TextView
+        android:id="@+id/lonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Longitude:"
-        android:layout_below="@+id/alttitudeText"/>
+        android:layout_below="@+id/latText"/>
     <TextView
-        android:id="@+id/accuracyText"
+        android:id="@+id/lonValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_below="@+id/latValue"
+        android:layout_toRightOf="@id/lonText"/>
+    <TextView
+        android:id="@+id/accText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Accuracy:"
-        android:layout_below="@+id/longitudeText"/>
+        android:layout_below="@+id/lonText"/>
+    <TextView
+        android:id="@+id/accValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_below="@id/lonValue"
+        android:layout_toRightOf="@id/accText"/>
     <TextView
         android:id="@+id/speedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Speed:"
-        android:layout_below="@+id/accuracyText"/>
+        android:layout_below="@+id/accText"/>
+    <TextView
+        android:id="@+id/speedValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_below="@+id/accValue"
+        android:layout_toRightOf="@id/speedText"/>
     <TextView
         android:id="@+id/addressText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address"
         android:layout_below="@+id/speedText"/>
+    <TextView
+        android:id="@+id/addressValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addressText"/>
 
     <Button
         android:id="@+id/mapButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show Map"
-        android:layout_below="@+id/addressText"
+        android:layout_below="@+id/addressValue"
         android:onClick="showMapAction"/>
 
 
