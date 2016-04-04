@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
@@ -31,9 +32,18 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LocationListener{
 
     private LocationManager locationManager;
-    public final static String CORDINATES = "com.example.aaron.locationgps.cordinates.VALUE";
     Double lat, lng;
 
+    private static final String[] INITIAL_PERMS={
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+    };
+    private boolean canAccessLocation(){
+        return(hasPermission(Manifest.permission.ACCESS_FINE_LOCATION));
+    }
+    private  boolean hasPermission(String perm){
+        return (PackageManager.PERMISSION_GRANTED == checkSelfPermission(perm));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +70,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         intent.putExtra("latitudeData", lat);
         intent.putExtra("longitudeData",lng);
         startActivity(intent);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if(!canAccessLocation()){
+            requestPermissions(INITIAL_PERMS,0);
+        }
+        String provider = locationManager.getBestProvider(new Criteria(),true);
     }
 
     @Override
