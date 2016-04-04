@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.aaron.locationgps.MainActivity"
-    android:background="@drawable/highway"
+    android:background="@drawable/background"
     android:layout_centerHorizontal="true">
 
     <TextView
@@ -19,88 +19,88 @@
         android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorBlack"/>
     <TextView
         android:id="@+id/latValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="20dp"
-        android:layout_alignBaseline="@+id/latText"
-        android:layout_alignBottom="@+id/latText"
-        android:layout_toRightOf="@+id/mapButton"
-        android:layout_toEndOf="@+id/mapButton" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/latText"
+        android:textColor="@color/colorAccent"/>
     <TextView
         android:id="@+id/lonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Longitude:"
-        android:layout_below="@+id/latText"
+        android:layout_below="@+id/latValue"
         android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorBlack"/>
     <TextView
         android:id="@+id/lonValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="20dp"
-        android:layout_alignBaseline="@+id/lonText"
-        android:layout_alignBottom="@+id/lonText"
-        android:layout_alignLeft="@+id/latValue"
-        android:layout_alignStart="@+id/latValue" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/lonText"
+        android:textColor="@color/colorAccent"/>
     <TextView
         android:id="@+id/accText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Accuracy:"
-        android:layout_below="@+id/lonText"
+        android:layout_below="@+id/lonValue"
         android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorBlack"/>
     <TextView
         android:id="@+id/accValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0m"
         android:textSize="20dp"
-        android:layout_alignBaseline="@+id/accText"
-        android:layout_alignBottom="@+id/accText"
-        android:layout_alignLeft="@+id/lonValue"
-        android:layout_alignStart="@+id/lonValue" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/accText"
+        android:textColor="@color/colorAccent"/>
     <TextView
         android:id="@+id/speedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Speed:"
-        android:layout_below="@+id/accText"
+        android:layout_below="@+id/accValue"
         android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorBlack"/>
     <TextView
         android:id="@+id/speedValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0m/s"
         android:textSize="20dp"
-        android:layout_alignBaseline="@+id/speedText"
-        android:layout_alignBottom="@+id/speedText"
-        android:layout_alignRight="@+id/accValue"
-        android:layout_alignEnd="@+id/accValue" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/speedText"
+        android:textColor="@color/colorAccent"/>
     <TextView
         android:id="@+id/addressText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address"
-        android:layout_below="@+id/speedText"
+        android:layout_below="@+id/speedValue"
         android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="5dp"
-        android:textColor="#ffffff"/>
+        android:textColor="@color/colorBlack"/>
     <TextView
         android:id="@+id/addressValue"
         android:layout_width="wrap_content"
@@ -108,22 +108,22 @@
         android:layout_below="@id/addressText"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp" />
+        android:textColor="@color/colorAccent"
+        android:textSize="15dp"/>
 
     <Button
         android:id="@+id/mapButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show Map"
-        android:layout_below="@+id/addressValue"
-        android:layout_centerHorizontal="true"
         android:onClick="showMapAction"
         android:singleLine="false"
         android:background="#00ffffff"
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:textSize="40dp"
-        android:layout_marginTop="60dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

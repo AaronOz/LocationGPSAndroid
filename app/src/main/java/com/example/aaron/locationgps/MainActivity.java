@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -21,6 +23,7 @@ import com.google.android.gms.maps.model.LatLng;
 import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 
 //import java.util.jar.Manifest;
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     }
     public void showMapAction(View view){
         Intent intent = new Intent(this,MapsActivity.class);
-        intent.putExtra("latitudeData",lat);
+        intent.putExtra("latitudeData", lat);
         intent.putExtra("longitudeData",lng);
         startActivity(intent);
     }
@@ -71,18 +74,25 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         DecimalFormat decimalFormat = new DecimalFormat(".#");
 
         Toast.makeText(getBaseContext(), "Location has changed", Toast.LENGTH_LONG).show();
-        LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude())
-                ;
+        LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+
+        List<Address> currentAddress = getAddress(latLng);
         lat = location.getLatitude();
         lng = location.getLongitude();
         float accu = location.getAccuracy();
         float speed = location.getSpeed();
+        String address = currentAddress.get(0).getAddressLine(0);
+        String city = currentAddress.get(0).getAddressLine(1);
+        String country = currentAddress.get(0).getAddressLine(2);
+
 
 
         latValue.setText(decimalFormat.format(lat));
         lonValue.setText(decimalFormat.format(lng));
         accValue.setText(decimalFormat.format(accu)+"m");
         speedValue.setText(decimalFormat.format(speed)+"m/s");
+
+        addressValue.setText(address+" - "+city+" - "+country);
     }
 
     @Override
@@ -98,6 +108,31 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+    public List<Address> getAddress(LatLng point) {
+        try {
+            Geocoder geocoder;
+            List<Address> addresses;
+            geocoder = new Geocoder(this);
+            if (point.latitude != 0 || point.longitude != 0) {
+                addresses = geocoder.getFromLocation(point.latitude ,
+                        point.longitude, 1);
+                String address = addresses.get(0).getAddressLine(0);
+                String city = addresses.get(0).getAddressLine(1);
+                String country = addresses.get(0).getAddressLine(2);
+                Log.i("Address",address+" - "+city+" - "+country);
+
+                return addresses;
+
+            } else {
+                Toast.makeText(this, "latitude and longitude are null",
+                        Toast.LENGTH_LONG).show();
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
